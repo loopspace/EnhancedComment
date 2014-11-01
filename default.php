@@ -1,7 +1,7 @@
 <?php if (!defined('APPLICATION')) exit();
 
-$PluginInfo['CommentNumbers'] = array(
-   'Description' => 'Adds comment numbers to the comment display.',
+$PluginInfo['EnhancedComments'] = array(
+   'Description' => 'Enhances the comment display with numbers and source.',
    'Version' => '1.0',
    'RequiredApplications' => NULL, 
    'RequiredTheme' => FALSE, 
@@ -12,7 +12,7 @@ $PluginInfo['CommentNumbers'] = array(
    'AuthorUrl' => 'http://loopspace.mathforge.org'
 );
 
-class CommentNumbersPlugin extends Gdn_Plugin {
+class EnhancedCommentsPlugin extends Gdn_Plugin {
 
   var $number;
   var $source;
@@ -35,12 +35,13 @@ class CommentNumbersPlugin extends Gdn_Plugin {
 
   public function DiscussionController_CommentOptions_Handler(&$Sender)
   {
-    $Sender->EventArguments['CommentOptions']['ShowSource'] = array('Label' => T('Show Source'), 'Url' => '/vanilla/post/showcomment/'.$Sender->EventArguments['Comment']->CommentID, 'ShowSource', 'Class' => 'ShowSource');
+    $Sender->EventArguments['CommentOptions']['ShowSource'] = array('Label' => T('Show Source'), 'Url' => '#', 'ShowSource', 'Class' => 'ShowSource');
+    $Sender->EventArguments['CommentOptions']['CopyLink'] = array('Label' => T('Copy Link'), 'Url' => '#', 'CopyLink', 'Class' => 'Copy Link');
   }
 
  public function Base_Render_Before($Sender) {
-   $Sender->Head->AddScript('plugins/CommentNumbers/js/showcomment.js','text/javascript',20);
-   $Sender->AddCSSFile('plugins/CommentNumbers/css/source.css');
+   $Sender->Head->AddScript('plugins/EnhancedComments/js/enhancedcomment.js','text/javascript',20);
+   $Sender->AddCSSFile('plugins/EnhancedComments/css/enhancedcomment.css');
   }
 
 }
