@@ -3,7 +3,6 @@ jQuery(document).ready(function($) {
     $('a.ShowSource').livequery('click', function() {
       var btn = this;
       var container = $(btn).parents('li.ItemComment');
-      $(container).addClass('ShowSource');
       var parent = $(container).find('div.Comment');
       var msg = $(parent).find('div.Message');
 	var src = $(parent).find('div.CommentSource');
@@ -21,6 +20,16 @@ jQuery(document).ready(function($) {
 	    $(src).show();
 	}
        return false;
+    });
+    $('a.CopyLink').livequery('click', function() {
+	var btn = this;
+	var container = $(btn).parents('li.ItemComment');
+	var parent = $(parent).find('div.Message');
+	var link = $(container).find('a.PermaLink');
+	var url = $(link).attr('href');
+	//	$('<div class="CopyLink">' . url . '</div>').insertBefore(parent);
+	alert(url);
+	return false;
     });
     $('a.EditComment').livequery('click',function () {
 	$('.CommentSource').hide();
