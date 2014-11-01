@@ -36,13 +36,18 @@ class EnhancedCommentsPlugin extends Gdn_Plugin {
   public function DiscussionController_CommentOptions_Handler(&$Sender)
   {
     $Sender->EventArguments['CommentOptions']['ShowSource'] = array('Label' => T('Show Source'), 'Url' => '#', 'ShowSource', 'Class' => 'ShowSource');
-    $Sender->EventArguments['CommentOptions']['CopyLink'] = array('Label' => T('Copy Link'), 'Url' => '#', 'CopyLink', 'Class' => 'Copy Link');
+    $Sender->EventArguments['CommentOptions']['CopyLink'] = array('Label' => T('Copy Link'), 'Url' => '#', 'CopyLink', 'Class' => 'CopyLink');
   }
 
  public function Base_Render_Before($Sender) {
    $Sender->Head->AddScript('plugins/EnhancedComments/js/enhancedcomment.js','text/javascript',20);
    $Sender->AddCSSFile('plugins/EnhancedComments/css/enhancedcomment.css');
   }
+
+ public function DiscussionController_AfterComments_Handler(&$Sender)
+ {
+   echo '<div id="copylinkctr" class="Flyout MenuItems"><span id="copylink">hello world</span><a href="#" id="copylinkdis">&times;</a></div>';
+ }
 
 }
 

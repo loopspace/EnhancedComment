@@ -15,3 +15,19 @@
     display: block;
     font-weight: bold;
 }
+#copylinkdis {
+    display: inline;
+    padding: 2px 5px;
+    margin: 0px 5px;
+    background: #777665;
+    border-radius: 5px;
+    color: #fff !important;
+}
+#copylinkctr {
+    visibility: hidden;
+    padding: 5px 10px;
+}
+#copylinkctr:before,#copylinkctr:after {
+			right: 9px;
+			left: auto;
+}
